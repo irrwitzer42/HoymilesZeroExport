@@ -130,11 +130,18 @@ TASMOTA_IP = 192.168.10.90
 Then run the Docker image:
 ```sh
 docker run -d --name hoymileszeroexport \
-    -v ${PWD}/HoymilesZeroExport_Config_Override.ini:/app/HoymilesZeroExport_Config_Override.ini \
-    ghcr.io/reserve85/hoymileszeroexport:main -c ./HoymilesZeroExport_Config_Override.ini
+    -v ${PWD}/HoymilesZeroExport_Config_Override.ini:/app/config.ini \
+    ghcr.io/reserve85/hoymileszeroexport:main -c /app/config.ini
 ```
 
-Using docker-compose:
+You can monitor the logs by runinng:
+```sh
+docker logs -f hoymileszeroexport
+```
+
+### Docker Compose
+
+A matching docker-compose.yml is included in this repo, or you can copy&paste the following into your own version:
 ```yaml
 version: '3.3'
 services:
@@ -144,6 +151,17 @@ services:
       - ./HoymilesZeroExport_Config_Override.ini:/app/config.ini
     command: -c /app/config.ini
 ```
+So after checkout and making the changes to your HoymilesZeroExport_Config_Override.ini, you should be able to install and start the container by executing:
+```
+docker-compose up -d
+```
+
+To monitor the logs, just run:
+```
+docker-compose logs -f
+```
+
+If you don't use the standalone version of docker-compose but the plugin, just leave out the hyphon: i.e. `docker compose ...`.
 
 ## Special thanks to:
 - https://github.com/lumapu/ahoy
