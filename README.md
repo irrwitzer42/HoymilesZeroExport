@@ -150,6 +150,7 @@ services:
     volumes:
       - ./HoymilesZeroExport_Config_Override.ini:/app/config.ini
     command: -c /app/config.ini
+    restart: unless-stopped
 ```
 So after checkout and making the changes to your HoymilesZeroExport_Config_Override.ini, you should be able to install and start the container by executing:
 ```
