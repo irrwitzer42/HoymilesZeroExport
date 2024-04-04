@@ -154,12 +154,12 @@ services:
 ```
 So after checkout and making the changes to your HoymilesZeroExport_Config_Override.ini, you should be able to install and start the container by executing:
 ```
-docker-compose up -d
+docker compose up -d      # or 'docker-compose up -d' on older systems
 ```
 
 To monitor the logs, just run:
 ```
-docker-compose logs -f
+docker compose logs -f    # or 'docker-compose logs -f' on older systems
 ```
 
 If you don't use the standalone version of docker-compose but the plugin, just leave out the hyphon: i.e. `docker compose ...`.
