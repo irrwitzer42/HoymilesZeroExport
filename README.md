@@ -16,12 +16,14 @@ This script does not use MQTT, it's based on webapi communication.
 - [ioBroker](https://www.iobroker.net/) with [simpleAPI](https://github.com/ioBroker/ioBroker.simple-api)
 - [HomeAssistant](https://www.home-assistant.io/)
 - [Volkszaehler (VZLogger)](https://volkszaehler.org/)
+- [ESPHome](https://esphome.io/)
+- shell script based interface
 - easy to implement new smart meter modules supporting WebAPI / JSON
 
 ### Supported DTU and Inverters
 - [Ahoy](https://github.com/lumapu/ahoy) - this script is developed with AHOY and therefore i recommend it
 - [OpenDTU](https://github.com/tbnobody/OpenDTU)
-- Hoymiles HM-Series Inverter (since V1.7 multiple inverters are supported) like [1-in-1](https://www.hoymiles.com/product/microinverter/hm-300-350-400-eu/), [2-in-1](https://www.hoymiles.com/product/microinverter/hm-600-700-800-eu/) or [4-in-1](https://www.hoymiles.com/product/microinverter/hm-1200-1500-eu/)
+- Hoymiles HM + HMS-Series Inverter (since V1.7 multiple inverters are supported) like [1-in-1](https://www.hoymiles.com/product/microinverter/hm-300-350-400-eu/), [2-in-1](https://www.hoymiles.com/product/microinverter/hm-600-700-800-eu/) or [4-in-1](https://www.hoymiles.com/product/microinverter/hm-1200-1500-eu/)
 
 ### Support of battery powered Hoymiles Inverters
 With Version 1.28 and higher you can set various limits to support battery powered Hoymiles Inverters
@@ -102,6 +104,12 @@ sudo journalctl -u HoymilesZeroExport.service -n 20000 -e -f
 If you really don´t want the service anymore, just uninstall it
 ```sh
 sudo ./uninstall_service.sh
+```
+
+If you want to update the script to the latest version on Github:
+```sh
+sudo chmod +x update.sh
+sudo ./update.sh
 ```
 
 ## Windows installation

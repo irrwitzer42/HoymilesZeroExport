@@ -1,5 +1,147 @@
 # Changelog
 
+## V1.90
+### script
+* fix HOY_BATTERY_THRESHOLD_NORMAL_LIMIT_IN_V, see https://github.com/reserve85/HoymilesZeroExport/issues/174
+
+## V1.89
+### script
+* Auto-retry failed requests
+### config
+* add `COMMON`: `MAX_RETRIES`
+* add `COMMON`: `RETRY_STATUS_CODES`
+* add `COMMON`: `RETRY_BACKOFF_FACTOR`
+
+## V1.88
+### script
+* Refactoring: Reset all inverter data when inverter becomes unavailable
+
+## V1.87
+### script
+* Add support for dynamic reconfiguration of config parameters via MQTT
+### config
+* Add optional section '[MQTT_CONFIG]' to config file. If present, the script will listen for MQTT messages to reconfigure various parameters at runtime.
+
+## V1.86
+### script
+* Prepare config to support dynamic reconfiguration of various parameters
+
+## V1.85
+### script
+* Added shell script based powermeter interface (USE_SCRIPT)
+### config
+* Added parameters for shell script based powermeter interface (SCRIPT_)
+### bash script
+* Added example shell script for usage with Victron Multiplus II (GetPowerFromVictronMultiplus.sh)
+### 
+* Updated supported interface list in README.md with new shell script based powermeter
+
+## V1.84
+### script
+* Add support for priority mixed-mode (combination of battery powered and non-battery powered inverters).
+
+## V1.83
+### script
+* Bugfix fallback value
+### config
+* added comment
+
+## V1.82
+### script
+* read the power rating of each inverter from config file.
+* calculate HOY_MIN_POWER based on the inverter power rating.
+### config
+* add HOY_INVERTER_WATT to INVERTER_x section
+
+## V1.81
+### script
+* add option to enable/disable to set the inverter to min watts when the powermeter can´t be read out. https://github.com/reserve85/HoymilesZeroExport/issues/28#issuecomment-1967306742 + https://github.com/reserve85/HoymilesZeroExport/issues/74
+### config
+* add `COMMON`: `SET_INVERTER_TO_MIN_ON_POWERMETER_ERROR`
+
+## V1.80
+### script
+* add ESPHome for intermediate power meter
+* use absolute value for intermediate power value
+### config
+* add ESPHome fields
+
+## V1.79
+### script
+* fix intermediate meter (HA, IOBroker): define a fallback value for POWER_CALCULATION (https://github.com/reserve85/HoymilesZeroExport/issues/144)
+
+## V1.78
+### script
+* openDTU: don´t override serialnumber every time a inverter gets available
+### config
+* optional field in : `INVERTER_x`: `SERIAL_NUMBER`: If you use more than one inverter you should define the serialnumber(s) in the config. Else a mix-up of the inverters possible (only openDTU)
+
+## V1.77
+### script
+* fixed wrong calculation "RemainingDelay"
+
+## V1.76
+### script
+* removed SetLimitDelay + SetLimitDelayMultipleInverter
+* improved loop-code
+### Config
+* removed `SET_LIMIT_DELAY_IN_SECONDS` + `SET_LIMIT_DELAY_IN_SECONDS_MULTIPLE_INVERTER`
+
+## V1.75
+### script
+* refactoring, all DTU commands moved into DTU class
+* support newest version of openDTU (API changed, see https://github.com/tbnobody/OpenDTU/releases/tag/v24.2.12)
+* set min Version of openDTU to v24.2.12
+* support newest version of AhoyDTU (Authentication, removed Factor, see https://github.com/lumapu/ahoy/issues/1415)
+* set min Version of AhoyDTU to 0.8.80
+### Config
+* renamed `AHOY_PASSWORD =` to `AHOY_PASS` (like openDTU)
+
+## V1.74
+### script
+* reverted script to support AHOY >= '0.7.29'
+
+## V1.73
+### script
+* Support of AHOY-DTU Authentication, https://github.com/reserve85/HoymilesZeroExport/issues/132 and https://github.com/lumapu/ahoy/issues/1415
+### Config
+* added `AHOY_PASSWORD =` to `AHOY_DTU`
+
+## V1.72
+### script
+* Emlog fix https://github.com/reserve85/HoymilesZeroExport/issues/134 -> calculate power
+### Config
+* added `EMLOG_JSON_POWER_CALCULATE` to `EMLOG`
+
+## V1.71
+### script
+* When intermediate meter is not available then try to get "ActualPower" from DTU
+* on battery mode: set Inverter to min power on meter-error
+
+## V1.70
+### script
+* refactoring, big big "thank you" to https://github.com/tomquist - i know it was overdue...
+
+## V1.69
+### script
+* try to fix: Only repeat limit for the specific inverter (where limit was not acknowledged)
+
+## V1.68
+### script
+* Only repeat limit for the specific inverter (where limit was not acknowledged)
+### Config
+* renamed `SET_LIMIT_RETRY` to `SET_POWERSTATUS_CNT`
+
+## V1.67
+### script
+* Limit-Handling improved (if not acknowledged -> retransmit)
+
+## V1.66
+### script
+* calculates an average of the "MinPanelVoltage", rel https://github.com/reserve85/HoymilesZeroExport/issues/120
+### Config
+* add: `INVERTER_x`: `HOY_BATTERY_AVERAGE_CNT`
+
 ## V1.65
 ### script
 * bugfix set limit retry
